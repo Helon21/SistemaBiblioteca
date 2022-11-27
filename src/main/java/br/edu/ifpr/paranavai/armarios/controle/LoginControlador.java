@@ -15,6 +15,4 @@ public class LoginControlador {
     public static String verifica(String email, String senha) {
         return LoginServico.verifica(email,senha);
     }
-    
-    
 }

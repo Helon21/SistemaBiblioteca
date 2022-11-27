@@ -1,26 +1,24 @@
-
 package br.edu.ifpr.paranavai.armarios.visao;
 
 import br.edu.ifpr.paranavai.armarios.controle.BibliotecarioControle;
 import br.edu.ifpr.paranavai.armarios.modelo.Bibliotecario;
 import javax.swing.JOptionPane;
 
-
 public class FormCadastroBibliotecaUI extends javax.swing.JFrame {
-    
+
     private Bibliotecario pessoa;
-    
+
     public FormCadastroBibliotecaUI() {
         initComponents();
         this.pessoa = new Bibliotecario();
     }
-    public FormCadastroBibliotecaUI(int codigo){
+
+    public FormCadastroBibliotecaUI(int codigo) {
         initComponents();
         this.pessoa = BibliotecarioControle.buscarPorId(codigo);
         panelFormulario.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados do bibliotecario" + this.pessoa.getPessoaId()));
-        txtNome.setText(this.pessoa.getNome());
+        lblNome.setText(this.pessoa.getNome());
     }
-    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -28,8 +26,8 @@ public class FormCadastroBibliotecaUI extends javax.swing.JFrame {
 
         panelFormulario = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        txtNome = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        lblNome = new javax.swing.JLabel();
+        txtNome = new javax.swing.JTextField();
         btnSalvar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
 
@@ -37,7 +35,7 @@ public class FormCadastroBibliotecaUI extends javax.swing.JFrame {
 
         jLabel1.setText("DadosEstudantes");
 
-        txtNome.setText("Nome");
+        lblNome.setText("Nome");
 
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -61,13 +59,13 @@ public class FormCadastroBibliotecaUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(txtNome)
+                    .addComponent(lblNome)
                     .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelFormularioLayout.createSequentialGroup()
                             .addComponent(btnSalvar)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnCancelar))
-                        .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtNome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(13, Short.MAX_VALUE))
         );
         panelFormularioLayout.setVerticalGroup(
@@ -76,9 +74,9 @@ public class FormCadastroBibliotecaUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(txtNome)
+                .addComponent(lblNome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
@@ -92,28 +90,28 @@ public class FormCadastroBibliotecaUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        CadastrosBibliotecaUI cadastros = new CadastrosBibliotecaUI();
+        cadastros.setLocationRelativeTo(null);
+        cadastros.setVisible(true);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        if(this.pessoa.getPessoaId() == null){
-            try{
+        if (this.pessoa.getPessoaId() == null) {
+            try {
                 this.pessoa.setNome(txtNome.getText());
                 this.pessoa = BibliotecarioControle.inserir(this.pessoa);
                 JOptionPane.showMessageDialog(this, "Alteração feita com sucesso!");
-            }
-            catch (Exception e){
+            } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Algo de errado aconteceu!");
                 e.printStackTrace();
             }
-        }
-        else{
+        } else {
             try {
                 this.pessoa.setNome(txtNome.getText());
                 this.pessoa = BibliotecarioControle.atualizar(this.pessoa);
                 JOptionPane.showMessageDialog(this, "Alteraçoes salvas com sucesso!");
-            } 
-            catch (Exception e) {
+            } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Algo de Errado Aconteceu!!!");
                 e.printStackTrace();
             }
@@ -161,8 +159,8 @@ public class FormCadastroBibliotecaUI extends javax.swing.JFrame {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lblNome;
     private javax.swing.JPanel panelFormulario;
-    private javax.swing.JLabel txtNome;
+    private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
 }

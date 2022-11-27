@@ -4,22 +4,27 @@
  */
 package br.edu.ifpr.paranavai.armarios.servico;
 
-/**        
- * 
- * 
+/**
+ *
+ *
  *
  * @author Aluno
  */
 public class LoginServico {
 
-    public static String verifica(String email, String senha){
-       if (email.equals("admin@admin.com")){
-           if (senha.equals("12345")){
+    public static String verifica(String email, String senha) {
+        if (email.equals("admin@admin.com")) {
+            if (senha.equals("12345")) {
                 return "Sucesso no login!";
-           }
-           return "Senha inválida!";
-       }
-       return "E-mail inválido!";         
+            }
+            return "Senha inválida!";
+        }
+        else if(email.equals("aluno@aluno.com")){
+            if (senha.equals("12345")){
+                return "Sucesso no Login!";
+            }
+            return "Senha Inválida";
+        }
+        return "E-mail Inválido!";
     }
-    
 }

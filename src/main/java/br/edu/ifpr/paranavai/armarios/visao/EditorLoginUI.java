@@ -33,8 +33,9 @@ public class EditorLoginUI extends javax.swing.JFrame {
         txtFieldEmail = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         passFieldSenha = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        btnLoginBibliotecario = new javax.swing.JButton();
         lblResposta = new javax.swing.JLabel();
+        btnLoginAluno = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,33 +52,39 @@ public class EditorLoginUI extends javax.swing.JFrame {
 
         passFieldSenha.setText("jPasswordField1");
 
-        jButton1.setText("Autenticar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnLoginBibliotecario.setText("Logar como bibliotecario");
+        btnLoginBibliotecario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnLoginBibliotecarioActionPerformed(evt);
             }
         });
 
         lblResposta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        btnLoginAluno.setText("Logar como Aluno");
+        btnLoginAluno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginAlunoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(87, 87, 87)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFieldEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
-                            .addComponent(passFieldSenha)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(152, 152, 152)
-                        .addComponent(jButton1)))
-                .addContainerGap(67, Short.MAX_VALUE))
             .addComponent(lblResposta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(87, 87, 87)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnLoginBibliotecario)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLoginAluno))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFieldEmail)
+                    .addComponent(passFieldSenha))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,7 +98,9 @@ public class EditorLoginUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(passFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnLoginBibliotecario)
+                    .addComponent(btnLoginAluno))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                 .addComponent(lblResposta)
                 .addGap(28, 28, 28))
@@ -115,13 +124,31 @@ public class EditorLoginUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFieldEmailActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnLoginBibliotecarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginBibliotecarioActionPerformed
         LoginControlador controle = new LoginControlador();
         String email = this.txtFieldEmail.getText();
         String senha = String.copyValueOf(this.passFieldSenha.getPassword());
         String resposta = controle.verifica(email, senha);
         lblResposta.setText(resposta);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        TelaBibliotecarioUI telaBibliotecario = new TelaBibliotecarioUI();
+        this.setVisible(false);
+        telaBibliotecario.setLocationRelativeTo(this);
+        telaBibliotecario.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnLoginBibliotecarioActionPerformed
+
+    private void btnLoginAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginAlunoActionPerformed
+        LoginControlador controle = new LoginControlador();
+        String email = this.txtFieldEmail.getText();
+        String senha = String.copyValueOf(this.passFieldSenha.getPassword());
+        String resposta = controle.verifica(email, senha);
+        lblResposta.setText(resposta);
+        TelaAlunoUI aluno = new TelaAlunoUI();
+        this.setVisible(false);
+        aluno.setLocationRelativeTo(this);
+        aluno.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnLoginAlunoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,7 +187,8 @@ public class EditorLoginUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnLoginAluno;
+    private javax.swing.JButton btnLoginBibliotecario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

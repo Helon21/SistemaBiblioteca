@@ -16,15 +16,15 @@ public class BibliotecarioServico {
         return dao.buscarPorId(id);
     }
 
-    public static Bibliotecario inserir(Bibliotecario bibliotecario) {
-        return dao.inserir(bibliotecario);
+    public static Bibliotecario inserir(Bibliotecario pessoa) {
+        return dao.inserir(pessoa);
     }
 
-    public static void atualizar(Bibliotecario bibliotecario) {
-        dao.atualizar(bibliotecario);
+    public static Bibliotecario atualizar(Bibliotecario pessoa) {
+        return dao.atualizar(pessoa);
     }
 
-    public static void excluir(Bibliotecario bibliotecario) {
-        dao.excluir(bibliotecario);
+    public static void excluir(Bibliotecario pessoa) {
+        dao.excluir(pessoa);
     }
 }

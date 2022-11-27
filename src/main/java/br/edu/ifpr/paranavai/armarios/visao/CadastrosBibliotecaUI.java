@@ -3,15 +3,17 @@ package br.edu.ifpr.paranavai.armarios.visao;
 import br.edu.ifpr.paranavai.armarios.controle.BibliotecarioControle;
 import br.edu.ifpr.paranavai.armarios.modelo.Bibliotecario;
 import java.util.List;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class CadastrosBibliotecaUI extends javax.swing.JFrame {
 
-    private List<Bibliotecario> listarTodosBibliotecarios;
+    List<Bibliotecario> listarTodosBibliotecarios;
 
     public CadastrosBibliotecaUI() {
         initComponents();
+        this.setLocationRelativeTo(null);
         listarTodosBibliotecarios = BibliotecarioControle.listarTodosBibliotecarios();
         populaTabelaBibliotecario(listarTodosBibliotecarios);
     }
@@ -27,7 +29,7 @@ public class CadastrosBibliotecaUI extends javax.swing.JFrame {
         btnExcluir = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtNome = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
         painelInferior = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -65,9 +67,14 @@ public class CadastrosBibliotecaUI extends javax.swing.JFrame {
 
         jLabel1.setText("Nome:");
         jPanel2.add(jLabel1);
-        jPanel2.add(jTextField1);
+        jPanel2.add(txtNome);
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnBuscar);
 
         javax.swing.GroupLayout painelSuperiorLayout = new javax.swing.GroupLayout(painelSuperior);
@@ -126,56 +133,66 @@ public class CadastrosBibliotecaUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
-        CadastrosBibliotecaUI cadastros = new CadastrosBibliotecaUI();
+        FormCadastroBibliotecaUI form = new FormCadastroBibliotecaUI();
         this.setVisible(false);
-        cadastros.setLocationRelativeTo(this);
-        cadastros.setVisible(true);
+        form.setLocationRelativeTo(this);
+        form.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        if(tblBibliotecario.getSelectedRow() >= 0) {
+        if (tblBibliotecario.getSelectedRow() >= 0) {
             int dadosLinha = tblBibliotecario.getSelectedRow();
             int codigo = (int) tblBibliotecario.getModel().getValueAt(dadosLinha, 0);
             FormCadastroBibliotecaUI form = new FormCadastroBibliotecaUI(codigo);
             this.setVisible(false);
-            this.setLocationRelativeTo(this);
-            this.setVisible(true);
+            form.setLocationRelativeTo(this);
+            form.setVisible(true);
             dispose();
-        }
-        else{
-            JOptionPane.showMessageDialog(null, "Selecione uma localização!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione um bibliotecario!");
         }
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        if(tblBibliotecario.getSelectedRow() >= 0){
-            int resposta = JOptionPane.showConfirmDialog(null, "Confirma a exclusão da Localização?", 
-            "Excluir Localização!", JOptionPane.YES_NO_OPTION);
-            if(resposta == 0){
+        if (tblBibliotecario.getSelectedRow() >= 0) {
+            int resposta = JOptionPane.showConfirmDialog(null, "Confirma a exclusão da Localização?",
+                    "Excluir Localização!", JOptionPane.YES_NO_OPTION);
+            if (resposta == 0) {
                 int dadosLinha = tblBibliotecario.getSelectedRow();
                 int codigo = (int) tblBibliotecario.getModel().getValueAt(dadosLinha, 0);
-                
-                for(Bibliotecario bibliotecario : this.listarTodosBibliotecarios){
-                    if(bibliotecario.getPessoaId() == codigo){
+
+                for (Bibliotecario bibliotecario : this.listarTodosBibliotecarios) {
+                    if (bibliotecario.getPessoaId() == codigo) {
                         BibliotecarioControle.excluir(bibliotecario);
                     }
                 }
                 this.listarTodosBibliotecarios = BibliotecarioControle.listarTodosBibliotecarios();
                 populaTabelaBibliotecario(this.listarTodosBibliotecarios);
-                
+
                 JOptionPane.showMessageDialog(null, "Bibliotecario Removido!");
             }
-        }
-        else{
+        } else {
             JOptionPane.showMessageDialog(null, "Selecione um bibliotecario");
         }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
-    public void populaTabelaBibliotecario(List<Bibliotecario> listar) {
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        ArrayList<Bibliotecario> filtrado = new ArrayList<Bibliotecario>();
+
+        for (Bibliotecario bibliotecario : listarTodosBibliotecarios) {
+            if (bibliotecario.getNome().toUpperCase().contains(txtNome.getText().toUpperCase())) {
+                filtrado.add(bibliotecario);
+            }
+        }
+
+        populaTabelaBibliotecario(filtrado);
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+public void populaTabelaBibliotecario(List<Bibliotecario> listar) {
         DefaultTableModel modeloDeColunasDaTabela = (DefaultTableModel) tblBibliotecario.getModel();
         //Limpar a tabela
-        while (modeloDeColunasDaTabela.getRowCount() != 0) {
+        while(modeloDeColunasDaTabela.getRowCount() != 0) {
             modeloDeColunasDaTabela.removeRow(0);
         }
         for (int i = 0; i < listar.size(); i++) {
@@ -198,16 +215,28 @@ public class CadastrosBibliotecaUI extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                }
+
+}
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadastrosBibliotecaUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadastrosBibliotecaUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadastrosBibliotecaUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastrosBibliotecaUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastrosBibliotecaUI.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(CadastrosBibliotecaUI.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(CadastrosBibliotecaUI.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(CadastrosBibliotecaUI.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -229,10 +258,10 @@ public class CadastrosBibliotecaUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel painelInferior;
     private javax.swing.JPanel painelSuperior;
     private javax.swing.JTable tblBibliotecario;
+    private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
 
 }
