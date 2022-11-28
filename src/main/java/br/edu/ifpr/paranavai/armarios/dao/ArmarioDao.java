@@ -6,7 +6,7 @@ import br.edu.ifpr.paranavai.armarios.modelo.Armario;
 public interface ArmarioDao {
     public List<Armario> buscarTodos();
     public Armario buscarPorId(Integer id);
-    public void inserir(Armario localizacao);
-    public void atualizar(Armario localizacao);
-    public void excluir(Armario localizacao);
+    public Armario inserir(Armario armario);
+    public Armario atualizar(Armario armario);
+    public void excluir(Armario armario);
 }

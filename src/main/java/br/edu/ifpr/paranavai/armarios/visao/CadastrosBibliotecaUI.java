@@ -156,8 +156,8 @@ public class CadastrosBibliotecaUI extends javax.swing.JFrame {
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         if (tblBibliotecario.getSelectedRow() >= 0) {
-            int resposta = JOptionPane.showConfirmDialog(null, "Confirma a exclusão da Localização?",
-                    "Excluir Localização!", JOptionPane.YES_NO_OPTION);
+            int resposta = JOptionPane.showConfirmDialog(null, "Confirma a exclusão do bibliotecario?",
+                    "Excluir Armario", JOptionPane.YES_NO_OPTION);
             if (resposta == 0) {
                 int dadosLinha = tblBibliotecario.getSelectedRow();
                 int codigo = (int) tblBibliotecario.getModel().getValueAt(dadosLinha, 0);

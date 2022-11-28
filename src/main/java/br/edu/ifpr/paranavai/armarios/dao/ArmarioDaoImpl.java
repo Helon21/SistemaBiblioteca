@@ -40,7 +40,7 @@ public class ArmarioDaoImpl implements ArmarioDao {
     }
 
     @Override
-    public void inserir(Armario armario) {
+    public Armario inserir(Armario armario) {
         try {
             sessao.beginTransaction();
             sessao.persist(armario);
@@ -48,10 +48,11 @@ public class ArmarioDaoImpl implements ArmarioDao {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return armario;
     }
 
     @Override
-    public void atualizar(Armario armario) {
+    public Armario atualizar(Armario armario) {
         try {
             sessao.beginTransaction();
             sessao.update(armario);
@@ -59,6 +60,7 @@ public class ArmarioDaoImpl implements ArmarioDao {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return armario;
     }
 
     @Override

@@ -18,7 +18,7 @@ public class Armario implements Serializable {
     
     
     @Column(name = "numero", unique = true, nullable = false)
-    private String numero;
+    private Integer numero;
     
     @Column(name = "ativo", unique = true, nullable = false, length = 100)
     private boolean ativo;
@@ -29,7 +29,7 @@ public class Armario implements Serializable {
     public Armario() {
     }
 
-    public Armario(String numero, boolean ativo, String observacoes) {
+    public Armario(Integer numero, boolean ativo, String observacoes) {
         this.numero = numero;
         this.ativo = ativo;
         this.observacoes = observacoes;
@@ -43,11 +43,11 @@ public class Armario implements Serializable {
         this.armarioId = armarioId;
     }
 
-    public String getNumero() {
+    public Integer getNumero() {
         return numero;
     }
 
-    public void setNumero(String numero) {
+    public void setNumero(Integer numero) {
         this.numero = numero;
     }
 

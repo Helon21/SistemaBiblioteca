@@ -29,8 +29,10 @@ public class TelaBibliotecarioUI extends javax.swing.JFrame {
         btnBibliotecarios = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        btnAjuda = new javax.swing.JButton();
+        btnDeslogar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        btnChecarArmarios = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,14 +56,23 @@ public class TelaBibliotecarioUI extends javax.swing.JFrame {
 
         jLabel3.setText("Inserção e Remoção de Bibliotecarios");
 
-        btnAjuda.setText("Deslogar");
-        btnAjuda.addActionListener(new java.awt.event.ActionListener() {
+        btnDeslogar.setText("Deslogar");
+        btnDeslogar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAjudaActionPerformed(evt);
+                btnDeslogarActionPerformed(evt);
             }
         });
 
         jLabel4.setText("Deslogar do Sistema");
+
+        btnChecarArmarios.setText("checar armários");
+        btnChecarArmarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChecarArmariosActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Checagem de Status dos Armários");
 
         javax.swing.GroupLayout panelBibliotecarioLayout = new javax.swing.GroupLayout(panelBibliotecario);
         panelBibliotecario.setLayout(panelBibliotecarioLayout);
@@ -71,18 +82,21 @@ public class TelaBibliotecarioUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(panelBibliotecarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelBibliotecarioLayout.createSequentialGroup()
-                        .addGroup(panelBibliotecarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addGroup(panelBibliotecarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel2)
-                                .addComponent(btnAlunos)))
-                        .addGap(197, 244, Short.MAX_VALUE))
+                        .addGroup(panelBibliotecarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelBibliotecarioLayout.createSequentialGroup()
+                                .addGap(52, 52, 52)
+                                .addComponent(jLabel1))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(btnAlunos)
+                            .addComponent(btnBibliotecarios))
+                        .addGap(197, 210, Short.MAX_VALUE))
                     .addGroup(panelBibliotecarioLayout.createSequentialGroup()
                         .addGroup(panelBibliotecarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnBibliotecarios)
-                            .addComponent(btnAjuda)
+                            .addComponent(jLabel5)
+                            .addComponent(btnChecarArmarios)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel3))
+                            .addComponent(btnDeslogar))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         panelBibliotecarioLayout.setVerticalGroup(
@@ -90,19 +104,23 @@ public class TelaBibliotecarioUI extends javax.swing.JFrame {
             .addGroup(panelBibliotecarioLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAlunos)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnBibliotecarios)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnChecarArmarios)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4)
-                .addGap(18, 18, 18)
-                .addComponent(btnAjuda)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnDeslogar)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         getContentPane().add(panelBibliotecario, java.awt.BorderLayout.CENTER);
@@ -118,13 +136,25 @@ public class TelaBibliotecarioUI extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnBibliotecariosActionPerformed
 
-    private void btnAjudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAjudaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAjudaActionPerformed
+    private void btnDeslogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeslogarActionPerformed
+        EditorLoginUI editor = new EditorLoginUI();
+        this.setVisible(false);
+        editor.setLocationRelativeTo(this);
+        editor.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnDeslogarActionPerformed
 
     private void btnAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlunosActionPerformed
 
     }//GEN-LAST:event_btnAlunosActionPerformed
+
+    private void btnChecarArmariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChecarArmariosActionPerformed
+        StatusArmariosUI status = new StatusArmariosUI();
+        this.setVisible(false);
+        status.setLocationRelativeTo(this);
+        status.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnChecarArmariosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,13 +193,15 @@ public class TelaBibliotecarioUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAjuda;
     private javax.swing.JButton btnAlunos;
     private javax.swing.JButton btnBibliotecarios;
+    private javax.swing.JButton btnChecarArmarios;
+    private javax.swing.JButton btnDeslogar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel panelBibliotecario;
     // End of variables declaration//GEN-END:variables
 }
