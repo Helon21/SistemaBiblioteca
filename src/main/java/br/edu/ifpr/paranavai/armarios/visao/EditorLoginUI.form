@@ -86,9 +86,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtFieldEmail">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Insira o e-mail"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtFieldEmailActionPerformed"/>
           </Events>
@@ -99,9 +96,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JPasswordField" name="passFieldSenha">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jPasswordField1"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnLoginBibliotecario">
           <Properties>

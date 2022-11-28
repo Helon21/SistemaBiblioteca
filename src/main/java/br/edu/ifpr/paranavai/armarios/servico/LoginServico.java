@@ -4,6 +4,8 @@
  */
 package br.edu.ifpr.paranavai.armarios.servico;
 
+import br.edu.ifpr.paranavai.armarios.visao.EditorLoginUI;
+
 /**
  *
  *
@@ -12,19 +14,26 @@ package br.edu.ifpr.paranavai.armarios.servico;
  */
 public class LoginServico {
 
-    public static String verifica(String email, String senha) {
+    public static boolean verifica(String email, String senha) {
         if (email.equals("admin@admin.com")) {
             if (senha.equals("12345")) {
-                return "Sucesso no login!";
+                return true;
             }
-            return "Senha inválida!";
+            System.out.println("Senha Inválida");
+            return false;
         }
-        else if(email.equals("aluno@aluno.com")){
-            if (senha.equals("12345")){
-                return "Sucesso no Login!";
+        System.out.println("E-mail Inválido!");
+        return false;
+    }
+    public static boolean verificaAluno(String email, String senha){
+        if(email.equals("aluno@aluno.com")){
+            if(senha.equals("12345")){
+                return true;
             }
-            return "Senha Inválida";
+            System.out.println("Senha Inválida");
+            return false;
         }
-        return "E-mail Inválido!";
+        System.out.println("E-mail Inválido!");
+        return false;
     }
 }

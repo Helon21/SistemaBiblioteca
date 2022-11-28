@@ -41,7 +41,6 @@ public class EditorLoginUI extends javax.swing.JFrame {
 
         jLabel1.setText("E-mail");
 
-        txtFieldEmail.setText("Insira o e-mail");
         txtFieldEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFieldEmailActionPerformed(evt);
@@ -49,8 +48,6 @@ public class EditorLoginUI extends javax.swing.JFrame {
         });
 
         jLabel2.setText("Senha");
-
-        passFieldSenha.setText("jPasswordField1");
 
         btnLoginBibliotecario.setText("Logar como bibliotecario");
         btnLoginBibliotecario.addActionListener(new java.awt.event.ActionListener() {
@@ -128,26 +125,35 @@ public class EditorLoginUI extends javax.swing.JFrame {
         LoginControlador controle = new LoginControlador();
         String email = this.txtFieldEmail.getText();
         String senha = String.copyValueOf(this.passFieldSenha.getPassword());
-        String resposta = controle.verifica(email, senha);
-        lblResposta.setText(resposta);
-        TelaBibliotecarioUI telaBibliotecario = new TelaBibliotecarioUI();
-        this.setVisible(false);
-        telaBibliotecario.setLocationRelativeTo(this);
-        telaBibliotecario.setVisible(true);
-        dispose();
+        boolean confirmacao = controle.verifica(email, senha);
+        if(confirmacao == true){
+            TelaBibliotecarioUI telaBibliotecario = new TelaBibliotecarioUI();
+            this.setVisible(false);
+            telaBibliotecario.setLocationRelativeTo(this);
+            telaBibliotecario.setVisible(true);
+            dispose();
+        }
+        else{
+            lblResposta.setText("E-mail ou senha Incorretos");
+        }
     }//GEN-LAST:event_btnLoginBibliotecarioActionPerformed
 
     private void btnLoginAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginAlunoActionPerformed
         LoginControlador controle = new LoginControlador();
         String email = this.txtFieldEmail.getText();
         String senha = String.copyValueOf(this.passFieldSenha.getPassword());
-        String resposta = controle.verifica(email, senha);
-        lblResposta.setText(resposta);
-        TelaAlunoUI aluno = new TelaAlunoUI();
-        this.setVisible(false);
-        aluno.setLocationRelativeTo(this);
-        aluno.setVisible(true);
-        dispose();
+        boolean confirmacao = controle.verificaAluno(email, senha);
+        if(confirmacao == true){
+            TelaAlunoUI aluno = new TelaAlunoUI();
+            this.setVisible(false);
+            aluno.setLocationRelativeTo(this);
+            aluno.setVisible(true);
+            dispose();
+        }
+        else{
+            lblResposta.setText("Email ou senha Inválidos");
+        }
+   
     }//GEN-LAST:event_btnLoginAlunoActionPerformed
 
     /**
