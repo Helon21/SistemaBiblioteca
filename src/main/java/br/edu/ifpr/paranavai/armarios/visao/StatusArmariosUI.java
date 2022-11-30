@@ -188,7 +188,7 @@ public class StatusArmariosUI extends javax.swing.JFrame {
         }
         for (int i = 0; i < listar.size(); i++) {
             Armario mostrarArmarios = listar.get(i);
-            Object[] dadosLinha = new Object[2];
+            Object[] dadosLinha = new Object[4];
             dadosLinha[0] = mostrarArmarios.getArmarioId();
             dadosLinha[1] = mostrarArmarios.getNumero();
             dadosLinha[2] = mostrarArmarios.isAtivo();

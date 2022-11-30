@@ -145,7 +145,11 @@ public class TelaBibliotecarioUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeslogarActionPerformed
 
     private void btnAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlunosActionPerformed
-
+        CadastrosAlunosUI cadastros = new CadastrosAlunosUI();
+        this.setVisible(false);
+        cadastros.setLocationRelativeTo(this);
+        cadastros.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnAlunosActionPerformed
 
     private void btnChecarArmariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChecarArmariosActionPerformed

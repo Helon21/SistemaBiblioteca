@@ -9,23 +9,23 @@ public class EstudanteServico {
 
     private static EstudanteDao dao = new EstudanteDaoImpl();
 
-    public static List<Estudante> buscarTodos() {
+    public static List<Estudante> buscarTodosEstudantes() {
         return dao.buscarTodos();
     }
 
-    public static Estudante buscarPorId(Integer id) {
-        return dao.buscarPorId(id);
+    public static Estudante buscarPorId(Integer codigo) {
+        return dao.buscarPorId(codigo);
     }
 
-    public static Estudante inserir(Estudante estudante) {
-        return dao.inserir(estudante);
+    public static Estudante inserir(Estudante pessoa) {
+        return dao.inserir(pessoa);
     }
 
-    public static void atualizar(Estudante estudante) {
-        dao.atualizar(estudante);
+    public static Estudante atualizar(Estudante pessoa) {
+        return dao.atualizar(pessoa);
     }
 
-    public static void excluir(Estudante estudante) {
-        dao.excluir(estudante);
+    public static void excluir(Estudante pessoa) {
+        dao.excluir(pessoa);
     }
 }

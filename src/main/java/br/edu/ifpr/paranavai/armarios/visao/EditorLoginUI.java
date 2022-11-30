@@ -49,6 +49,12 @@ public class EditorLoginUI extends javax.swing.JFrame {
 
         jLabel2.setText("Senha");
 
+        passFieldSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passFieldSenhaActionPerformed(evt);
+            }
+        });
+
         btnLoginBibliotecario.setText("Logar como bibliotecario");
         btnLoginBibliotecario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,6 +161,10 @@ public class EditorLoginUI extends javax.swing.JFrame {
         }
    
     }//GEN-LAST:event_btnLoginAlunoActionPerformed
+
+    private void passFieldSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passFieldSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passFieldSenhaActionPerformed
 
     /**
      * @param args the command line arguments

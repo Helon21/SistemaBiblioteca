@@ -20,7 +20,7 @@ public class TesteHibernate {
 		//Add new Employee object
 		Armario emp = new Armario();
 		emp.setAtivo(true);
-		emp.setNumero("B01");
+		//emp.setNumero("B01");
 		emp.setObservacoes("nenhuma");
 
 		session.save(emp);

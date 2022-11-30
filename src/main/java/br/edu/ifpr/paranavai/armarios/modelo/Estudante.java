@@ -2,7 +2,7 @@ package br.edu.ifpr.paranavai.armarios.modelo;
 
 import br.edu.ifpr.paranavai.armarios.dao.EstudanteDao;
 import java.io.Serializable;
-import java.util.List;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -15,7 +15,7 @@ public class Estudante extends Pessoa implements Serializable{
     public Estudante(){  
         
     }
-    public Estudante(String ra){
+    public Estudante(String ra, String nome, String email, String telefone, String senha, boolean ativo){
         this.ra = ra;
     }
 

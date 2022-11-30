@@ -1,5 +1,6 @@
 package br.edu.ifpr.paranavai.armarios.modelo;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,15 +14,25 @@ import javax.persistence.Table;
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Table(name="tb_pessoa")
-public class Pessoa {
+public class Pessoa implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_pessoa", unique = true, nullable = false)
+    
     private Integer pessoaId;
+    
     private String nome;
+   
     private String email;
-    private String telefone;
+    
 
+    private String telefone;
+    
+
+    private boolean ativo;
+    
+    private String senha;
+    
     public Integer getPessoaId() {
         return pessoaId;
     }
@@ -85,8 +96,7 @@ public class Pessoa {
     public void setDataCriacao(Date dataCriacao) {
         this.dataCriacao = dataCriacao;
     }
-    private String senha;
-    private boolean ativo;
+    
     private Date dataAtualizacao;
     private Date dataCriacao;
     

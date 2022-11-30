@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package br.edu.ifpr.paranavai.armarios.visao;
 
 import br.edu.ifpr.paranavai.armarios.controle.LocalizacaoControle;
@@ -53,6 +49,12 @@ public class FormLocalizacaoUI extends javax.swing.JFrame {
         panelFormulario.setOpaque(false);
 
         lblNome.setText("Nome");
+
+        txtNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeActionPerformed(evt);
+            }
+        });
 
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -138,6 +140,7 @@ public class FormLocalizacaoUI extends javax.swing.JFrame {
         EditorLocalizacaoUI editorLocalizacaoUI = new EditorLocalizacaoUI();
         editorLocalizacaoUI.setLocationRelativeTo(null);
         editorLocalizacaoUI.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -145,7 +148,12 @@ public class FormLocalizacaoUI extends javax.swing.JFrame {
         EditorLocalizacaoUI editorLocalizacaoUI = new EditorLocalizacaoUI();
         editorLocalizacaoUI.setLocationRelativeTo(null);
         editorLocalizacaoUI.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeActionPerformed
 
     /**
      * @param args the command line arguments

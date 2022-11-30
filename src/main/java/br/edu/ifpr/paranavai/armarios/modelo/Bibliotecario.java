@@ -13,8 +13,8 @@ public class Bibliotecario extends Pessoa implements Serializable{
     public Bibliotecario() {
         
     }
-    public Bibliotecario(String siape, String nome, String email, String telefone, String senha, boolean ativo, Date dataAtualizacao, Date dataCriacao){
-        super();
+    public Bibliotecario(String siape, String nome, String email, String telefone, String senha, boolean ativo,  Date dataAtualizacao, Date dataCriacao){
+        super(nome, email, telefone, senha, ativo, dataAtualizacao, dataCriacao);
     }
     public String getSiape() {
         return siape;
