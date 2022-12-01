@@ -7,17 +7,17 @@ import javax.swing.JOptionPane;
 public class FormAlunosCadastroUI extends javax.swing.JFrame {
 
     private Estudante estudante;
-    private String itemSelecionado;
 
     public FormAlunosCadastroUI() {
-        initComponents();
+        initComponents(); 
         this.estudante = new Estudante();
     }
 
     public FormAlunosCadastroUI(int codigo) {
+        initComponents();
         this.estudante = EstudanteControle.buscarPorId(codigo);
         panelFormularioAlunos.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados do Estudante " + this.estudante.getPessoaId()));
-        lblNome.setText(this.estudante.getNome());
+        lblAluno.setText(this.estudante.getNome());
         
     }
 
@@ -37,8 +37,9 @@ public class FormAlunosCadastroUI extends javax.swing.JFrame {
         btnCancelar = new javax.swing.JButton();
         txtSenha = new javax.swing.JPasswordField();
         lblSenha = new javax.swing.JLabel();
-        ComboBoxAtivo = new javax.swing.JComboBox<>();
-        lblAtivo = new javax.swing.JLabel();
+        lblAluno = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        txtRA = new javax.swing.JTextField();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -59,6 +60,18 @@ public class FormAlunosCadastroUI extends javax.swing.JFrame {
 
         lblTelefone.setText("Telefone:");
 
+        txtEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmailActionPerformed(evt);
+            }
+        });
+
+        txtTelefone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTelefoneActionPerformed(evt);
+            }
+        });
+
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,16 +86,23 @@ public class FormAlunosCadastroUI extends javax.swing.JFrame {
             }
         });
 
-        lblSenha.setText("Senha:");
-
-        ComboBoxAtivo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sim", "Não" }));
-        ComboBoxAtivo.addActionListener(new java.awt.event.ActionListener() {
+        txtSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ComboBoxAtivoActionPerformed(evt);
+                txtSenhaActionPerformed(evt);
             }
         });
 
-        lblAtivo.setText("Ativo:");
+        lblSenha.setText("Senha:");
+
+        lblAluno.setText("Aluno");
+
+        jLabel1.setText("RA:");
+
+        txtRA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRAActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelFormularioAlunosLayout = new javax.swing.GroupLayout(panelFormularioAlunos);
         panelFormularioAlunos.setLayout(panelFormularioAlunosLayout);
@@ -90,66 +110,70 @@ public class FormAlunosCadastroUI extends javax.swing.JFrame {
             panelFormularioAlunosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelFormularioAlunosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelFormularioAlunosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(panelFormularioAlunosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblAluno)
+                    .addGroup(panelFormularioAlunosLayout.createSequentialGroup()
+                        .addComponent(lblTelefone)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelFormularioAlunosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtTelefone)
+                            .addGroup(panelFormularioAlunosLayout.createSequentialGroup()
+                                .addComponent(btnSalvar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                                .addComponent(btnCancelar))))
                     .addGroup(panelFormularioAlunosLayout.createSequentialGroup()
                         .addComponent(lblSenha)
                         .addGap(18, 18, 18)
-                        .addComponent(txtSenha))
-                    .addGroup(panelFormularioAlunosLayout.createSequentialGroup()
-                        .addComponent(lblNome)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtNome))
-                    .addGroup(panelFormularioAlunosLayout.createSequentialGroup()
-                        .addGroup(panelFormularioAlunosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTelefone)
-                            .addComponent(lblAtivo))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panelFormularioAlunosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelFormularioAlunosLayout.createSequentialGroup()
-                                .addComponent(btnSalvar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                                .addComponent(btnCancelar))
-                            .addGroup(panelFormularioAlunosLayout.createSequentialGroup()
-                                .addComponent(ComboBoxAtivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(txtTelefone)))
-                    .addGroup(panelFormularioAlunosLayout.createSequentialGroup()
-                        .addComponent(lblEmail)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtEmail)))
-                .addContainerGap(166, Short.MAX_VALUE))
+                        .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelFormularioAlunosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(panelFormularioAlunosLayout.createSequentialGroup()
+                            .addComponent(lblEmail)
+                            .addGap(18, 18, 18)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelFormularioAlunosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelFormularioAlunosLayout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtRA, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelFormularioAlunosLayout.createSequentialGroup()
+                                .addComponent(lblNome)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(127, Short.MAX_VALUE))
         );
         panelFormularioAlunosLayout.setVerticalGroup(
             panelFormularioAlunosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelFormularioAlunosLayout.createSequentialGroup()
-                .addGap(13, 13, 13)
+                .addGap(18, 18, 18)
+                .addComponent(lblAluno)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelFormularioAlunosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNome)
-                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1)
+                    .addComponent(txtRA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelFormularioAlunosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNome))
+                .addGap(18, 18, 18)
                 .addGroup(panelFormularioAlunosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEmail)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(panelFormularioAlunosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSenha)
-                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSenha))
+                .addGap(26, 26, 26)
                 .addGroup(panelFormularioAlunosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTelefone)
                     .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelFormularioAlunosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ComboBoxAtivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblAtivo))
-                .addGap(18, 18, 18)
+                .addGap(21, 21, 21)
                 .addGroup(panelFormularioAlunosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
                     .addComponent(btnCancelar))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addGap(25, 25, 25))
         );
 
-        getContentPane().add(panelFormularioAlunos, java.awt.BorderLayout.LINE_START);
+        getContentPane().add(panelFormularioAlunos, java.awt.BorderLayout.PAGE_END);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -157,21 +181,16 @@ public class FormAlunosCadastroUI extends javax.swing.JFrame {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         if (this.estudante.getPessoaId() == null) {
             try {
+                this.estudante.setRa(txtRA.getText());
                 this.estudante.setNome(txtNome.getText());
                 this.estudante.setEmail(txtEmail.getText());
                 String senha = String.copyValueOf(txtSenha.getPassword());
                 this.estudante.setSenha(senha);
                 this.estudante.setTelefone(txtTelefone.getText());
-                itemSelecionado = ComboBoxAtivo.getSelectedItem().toString();
-                if ("Sim".equals(itemSelecionado)) {
-                    this.estudante.setAtivo(true);
-                } else if ("Não".equals(itemSelecionado)) {
-                    this.estudante.setAtivo(false);
-                }
 
                 this.estudante = EstudanteControle.inserir(this.estudante);
 
-                JOptionPane.showMessageDialog(this, "Localização Salva com Sucesso!!!");
+                JOptionPane.showMessageDialog(this, "Aluno cadastrado com sucesso!!!");
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Algo de Errado Aconteceu!!!");
                 e.printStackTrace();
@@ -179,7 +198,13 @@ public class FormAlunosCadastroUI extends javax.swing.JFrame {
 
         } else {
             try {
+                this.estudante.setRa(txtRA.getText());
                 this.estudante.setNome(txtNome.getText());
+                this.estudante.setEmail(txtEmail.getText());
+                String senha = String.copyValueOf(txtSenha.getPassword());
+                this.estudante.setSenha(senha);
+                this.estudante.setTelefone(txtTelefone.getText());
+                
                 this.estudante = EstudanteControle.atualizar(this.estudante);
                 JOptionPane.showMessageDialog(this, "Alterações salvas com Sucesso!!!");
             } catch (Exception e) {
@@ -202,9 +227,21 @@ public class FormAlunosCadastroUI extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    private void ComboBoxAtivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxAtivoActionPerformed
+    private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ComboBoxAtivoActionPerformed
+    }//GEN-LAST:event_txtSenhaActionPerformed
+
+    private void txtTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTelefoneActionPerformed
+
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailActionPerformed
+
+    private void txtRAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRAActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRAActionPerformed
 
     /**
      * @param args the command line arguments
@@ -242,11 +279,11 @@ public class FormAlunosCadastroUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> ComboBoxAtivo;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnSalvar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblAtivo;
+    private javax.swing.JLabel lblAluno;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblSenha;
@@ -254,6 +291,7 @@ public class FormAlunosCadastroUI extends javax.swing.JFrame {
     private javax.swing.JPanel panelFormularioAlunos;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtRA;
     private javax.swing.JPasswordField txtSenha;
     private javax.swing.JTextField txtTelefone;
     // End of variables declaration//GEN-END:variables

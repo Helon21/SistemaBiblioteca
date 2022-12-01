@@ -99,20 +99,20 @@ public class CadastrosBibliotecaUI extends javax.swing.JFrame {
 
         tblBibliotecario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Id", "Nome"
+                "ID", "Siape", "E-mail", "Senha", "Telefone"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -197,9 +197,13 @@ public void populaTabelaBibliotecario(List<Bibliotecario> listar) {
         }
         for (int i = 0; i < listar.size(); i++) {
             Bibliotecario mostrarBibliotecarios = listar.get(i);
-            Object[] dadosLinha = new Object[2];
+            Object[] dadosLinha = new Object[6];
             dadosLinha[0] = mostrarBibliotecarios.getPessoaId();
             dadosLinha[1] = mostrarBibliotecarios.getNome();
+            dadosLinha[2] = mostrarBibliotecarios.getSiape();
+            dadosLinha[3] = mostrarBibliotecarios.getEmail();
+            dadosLinha[4] = mostrarBibliotecarios.getSenha();
+            dadosLinha[5] = mostrarBibliotecarios.getTelefone();
             modeloDeColunasDaTabela.addRow(dadosLinha);
         }
     }

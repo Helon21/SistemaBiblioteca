@@ -1,7 +1,6 @@
 package br.edu.ifpr.paranavai.armarios.visao;
 
 import br.edu.ifpr.paranavai.armarios.modelo.Estudante;
-import br.edu.ifpr.paranavai.armarios.servico.EstudanteServico;
 import br.edu.ifpr.paranavai.armarios.controle.EstudanteControle;
 import java.util.ArrayList;
 import java.util.List;
@@ -85,7 +84,7 @@ public class CadastrosAlunosUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtNome))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(36, Short.MAX_VALUE)
+                        .addContainerGap(67, Short.MAX_VALUE)
                         .addComponent(btnInserir)
                         .addGap(18, 18, 18)
                         .addComponent(btnAlterar)
@@ -124,11 +123,11 @@ public class CadastrosAlunosUI extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nome", "E-mail", "Senha", "Telefone", "Ativo"
+                "ID", "RA", "Nome", "E-mail", "Senha", "Telefone"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false
@@ -196,9 +195,9 @@ public class CadastrosAlunosUI extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         ArrayList<Estudante> filtrado = new ArrayList<Estudante>();
-
-        for (Estudante estudante : listarTodosEstudantes) {
-            if (estudante.getNome().toUpperCase().contains(txtNome.getText().toUpperCase())) {
+        
+        for(Estudante estudante : listarTodosEstudantes){
+            if(estudante.getNome().toUpperCase().contains(txtNome.getText().toUpperCase())){
                 filtrado.add(estudante);
             }
         }
@@ -222,12 +221,13 @@ public class CadastrosAlunosUI extends javax.swing.JFrame {
         }
         for (int i = 0; i < listar.size(); i++) {
             Estudante mostrarEstudantes = listar.get(i);
-            Object[] dadosLinha = new Object[5];
+            Object[] dadosLinha = new Object[6];
             dadosLinha[0] = mostrarEstudantes.getPessoaId();
-            dadosLinha[1] = mostrarEstudantes.getNome();
-            dadosLinha[2] = mostrarEstudantes.getEmail();
-            dadosLinha[3] = mostrarEstudantes.getSenha();
-            dadosLinha[4] = mostrarEstudantes.getTelefone();
+            dadosLinha[1] = mostrarEstudantes.getRa();
+            dadosLinha[2] = mostrarEstudantes.getNome();
+            dadosLinha[3] = mostrarEstudantes.getEmail();
+            dadosLinha[4] = mostrarEstudantes.getSenha();
+            dadosLinha[5] = mostrarEstudantes.getTelefone();
             modeloDeColunasDaTabela.addRow(dadosLinha);
         }
     }
